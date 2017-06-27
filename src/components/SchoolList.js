@@ -1,6 +1,7 @@
 import React from 'react';
 import School from './School';
 import PropTypes, { shape, string, number, func } from 'prop-types';
+import './styles/SchoolList.css';
 
 const SchoolList = ({ data }) => {
   const schools = Object.keys(data);
@@ -11,7 +12,7 @@ const SchoolList = ({ data }) => {
   })
 
   return (
-    <aside>
+    <aside className="school-list">
       {schoolsArray}
     </aside>
   )

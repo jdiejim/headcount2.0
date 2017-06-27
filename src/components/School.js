@@ -1,16 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import SchoolDataTable from './SchoolDataTable';
 import PropTypes, { shape, string, number } from 'prop-types';
+import './styles/School.css';
 
-const School = ({ school: { location, data, info } }) => {
+class School extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSelected: false
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-  return(
-    <div>
-      {location}
-      <SchoolDataTable data={data} />
+  handleClick() {
+    this.setState({ isSelected: !this.state.isSelected });
+  }
 
-    </div>
-  )
+  render() {
+    const { school: { location, data, info } } = this.props;
+    const { isSelected } = this.state;
+    let renderGraph;
+
+    if (isSelected) {
+      renderGraph = <SchoolDataTable data={data} />;
+    }
+
+    return (
+      <article
+        onClick={this.handleClick}
+        className="school-card">
+        {location}
+        {renderGraph}
+      </article>
+    )
+
+  }
 }
 
 export default School;
