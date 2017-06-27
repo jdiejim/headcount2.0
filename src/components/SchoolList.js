@@ -3,12 +3,14 @@ import School from './School';
 import PropTypes, { shape, string, number, func } from 'prop-types';
 import './styles/SchoolList.css';
 
-const SchoolList = ({ data }) => {
-  const schools = Object.keys(data);
-  const schoolsArray = schools.map(school => {
-    const schoolData = data[school];
-    console.log(schoolData);
-    return <School school={schoolData} key={Math.round(Date.now()*Math.random())} />
+const SchoolList = ({ schools, selectedSchools, handleSelectSchool }) => {
+  const schoolKeys = Object.keys(schools);
+  const schoolsArray = schoolKeys.map(school => {
+    const schoolData = schools[school];
+    return <School school={schoolData}
+                   selectedSchools={selectedSchools}
+                   handleSelectSchool={handleSelectSchool}
+                   key={Math.round(Date.now()*Math.random())} />
   })
 
   return (
