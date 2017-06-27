@@ -1,1 +1,6 @@
 /*APP COMPONENT RELATED CSS GOES HERE*/
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
