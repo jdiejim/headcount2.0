@@ -70,8 +70,7 @@ export default class DistrictRepository {
       return originalKeys.map(e => this.findByName(e));
     }
 
-    return originalKeys.map(key => key.toLowerCase())
-                       .filter(key => key.includes(location.toLowerCase()))
+    return originalKeys.filter(key => key.toLowerCase().includes(location.toLowerCase()))
                        .map(e => this.findByName(e));
   }
 }
