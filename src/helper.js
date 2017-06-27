@@ -3,19 +3,28 @@ export default class DistrictRepository {
     this.data = this.normalizeData(data);
   }
 
-  normalizeData(data) {
-    return data.reduce((obj, location) => {
+  normalizeData(rawData) {
+    return rawData.reduce((obj, location) => {
       const keys = Object.keys(location);
       const formattedKeys = this.getFormattedKeys(keys);
       const newObj = this.getLocationObject(keys, formattedKeys, location);
-
-      if (!obj[location.Location]) {
-        obj[location.Location] = [];
+      const { timeFrame, data } = newObj;
+      const locKey = location.Location;
+      if (!obj[locKey]) {
+        obj[locKey] = this.getObjectTemplate(locKey);
       }
-
-      obj[location.Location].push(newObj);
+      obj[locKey].info.push(newObj);
+      obj[locKey].data[timeFrame] = this.getRoundedData(data);
       return obj;
     }, {});
+  }
+
+  getObjectTemplate(loc) {
+    return {
+        location: loc,
+        data: {},
+        info: [],
+    }
   }
 
   getFormattedKeys(keys) {
@@ -34,5 +43,22 @@ export default class DistrictRepository {
       }
       return obj;
     }, {});
+  }
+
+  getRoundedData(data) {
+    if(isNaN(data)){
+      return 0;
+    }
+    return Math.round(1000*data)/1000;
+  }
+
+  findByName(location) {
+    if (!location){
+      return undefined;
+    }
+    const originalKeys = Object.keys(this.data);
+    const keys = originalKeys.map(key => key.toLowerCase());
+    const index = keys.indexOf(location.toLowerCase());
+    return this.data[originalKeys[index]];
   }
 }
