@@ -59,6 +59,19 @@ export default class DistrictRepository {
     const originalKeys = Object.keys(this.data);
     const keys = originalKeys.map(key => key.toLowerCase());
     const index = keys.indexOf(location.toLowerCase());
+
     return this.data[originalKeys[index]];
+  }
+
+  findAllMatches(location) {
+    const originalKeys = Object.keys(this.data);
+
+    if (!location) {
+      return originalKeys.map(e => this.findByName(e));
+    }
+
+    return originalKeys.map(key => key.toLowerCase())
+                       .filter(key => key.includes(location.toLowerCase()))
+                       .map(e => this.findByName(e));
   }
 }
