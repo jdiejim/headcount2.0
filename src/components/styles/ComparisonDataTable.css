@@ -2,3 +2,12 @@
   flex: 0, 1, auto;
   width: 80%;
 }
+
+.comparison-header-cell p {
+  width: 100px;
+  padding: 3px 20px;
+  margin: 0;
+  border-radius: 5px;
+  color: #000;
+  text-align: center;
+}

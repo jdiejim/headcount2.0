@@ -8,6 +8,9 @@ const ComparisonDataTable = ({ schools }) => {
     return (<div>Please select a school.</div>);
   }
 
+  const tableHeader = [schools[0].location];
+  if(schools[1]) tableHeader.push(schools[1].location);
+
   let dataKeys = {};
   schools.forEach((school) => {
     dataKeys = Object.assign(dataKeys, school.data)
@@ -37,6 +40,17 @@ const ComparisonDataTable = ({ schools }) => {
 
   return(
     <div className="comparison-table">
+      <article className="comparison-table-row">
+        <p className="year-cell"></p>
+        <div className="comparison-header-cell">
+          <p>{tableHeader[0]}</p>
+        </div>
+        {tableHeader[1] &&
+          <div className="comparison-header-cell">
+            <p>{tableHeader[1]}</p>
+          </div>
+        }
+      </article>
       {comparisonTableCells}
     </div>
   )
