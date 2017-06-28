@@ -1,9 +1,9 @@
 import React from 'react';
 import TableCell  from './TableCell';
-import { objectOf, string, number } from 'prop-types';
+import { objectOf, number } from 'prop-types';
 import './styles/SchoolDataTable.css';
 
-const SchoolDataTable = ({ data, location }) => {
+const SchoolDataTable = ({ data }) => {
   const tableCells = Object.keys(data).map(e =>
     <TableCell
       key={Math.round(Date.now() * Math.random())}
@@ -20,7 +20,6 @@ const SchoolDataTable = ({ data, location }) => {
 
 SchoolDataTable.propTypes = {
   data: objectOf(number),
-  location: string
 }
 
 export default SchoolDataTable;

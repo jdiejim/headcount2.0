@@ -13,7 +13,7 @@ const School = (props) => {
   }
 
   if (selectedSchools.map(s => s.location).indexOf(location) !== -1) {
-    renderGraph = <SchoolDataTable data={data} location={location} />;
+    renderGraph = <SchoolDataTable data={data} />;
   }
 
   return(
