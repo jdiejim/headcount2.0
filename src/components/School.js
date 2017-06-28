@@ -27,15 +27,9 @@ const data = shape({
   timeFrame: number,
 });
 
-const school = shape({
-  data: number,
-  info: arrayOf(data),
-  location: string
-});
-
 School.propTypes = {
   school: object,
-  selectedSchools: arrayOf(school),
+  selectedSchools: arrayOf(object),
   handleSelectSchool: func,
 }
 
