@@ -1,13 +1,17 @@
 import React from 'react';
 import School from './School';
-import ComparisonDetail from './ComparisonDetail';
+import SchoolDataGraph from './SchoolDataGraph';
 import PropTypes, { shape, string, object, arrayOf } from 'prop-types';
 import './styles/SchoolDetail.css';
 
 const SchoolDetail = ({ data }) => {
+  let renderVal = [];
+  data.forEach(school => {
+    renderVal.push(<SchoolDataGraph school={school} />);
+  })
   return(
     <div className="school-detail">
-      <ComparisonDetail data={data}  />
+      {renderVal}
     </div>
   )
 }

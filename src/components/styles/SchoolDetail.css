@@ -1,3 +1,4 @@
 .school-detail {
+  display: flex;
   margin-left: 280px;
 }
