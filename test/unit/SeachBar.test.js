@@ -16,7 +16,8 @@ it('should have a default state', () => {
 });
 
 it('should let us edit state on change', () => {
-  const wrapper = shallow(<SearchBar />);
+  const mockFn = jest.fn();
+  const wrapper = shallow(<SearchBar handleSearch={mockFn} />);
   const result = 'suh';
   const searchState = wrapper.state();
   const searchInput = wrapper.find('.search-input');
@@ -26,4 +27,20 @@ it('should let us edit state on change', () => {
   searchInput.simulate('change', { target: { value: result } });
 
   expect(wrapper.state().input).toEqual(result);
+});
+
+it('should run function on input change', () => {
+  const mockFn = jest.fn();
+  const wrapper = shallow(<SearchBar handleSearch={mockFn} />);
+  const result = 'suh';
+  const searchState = wrapper.state();
+  const searchInput = wrapper.find('.search-input');
+
+  expect(searchState.input).toEqual('');
+
+  searchInput.simulate('change', { target: { value: result } });
+  searchInput.simulate('change', { target: { value: result } });
+  searchInput.simulate('change', { target: { value: result } });
+
+  expect(mockFn).toHaveBeenCalledTimes(3);
 });

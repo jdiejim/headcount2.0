@@ -7,16 +7,18 @@ import {mount, shallow } from 'enzyme';
 
 it('renders correct components when it mounts', () => {
   const wrapper = shallow(<App/>)
+  
   expect(wrapper.find('SchoolList').length).toEqual(1)
   expect(wrapper.find('SchoolDetail').length).toEqual(1)
 });
 
 it('should have a default state', () => {
-  const wrapper = shallow(<App/>)
-  const stateOfApp = wrapper.state()
+  const wrapper = shallow(<App/>);
+  const stateOfApp = wrapper.state();
 
-  expect(stateOfApp.schools).toEqual({})
-  expect(stateOfApp.selectedSchools).toEqual([])
+  expect(stateOfApp.schools).toEqual({});
+  expect(stateOfApp.selectedSchools).toEqual([]);
+  expect(stateOfApp.schoolsArray).toEqual([]);
 });
 
 it.skip('should let us add to the state', () => {
