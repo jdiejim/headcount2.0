@@ -1,5 +1,6 @@
 import React from 'react';
 import School from './School';
+import SearchBar from './SearchBar';
 import { shape, string, number, func, arrayOf, objectOf, oneOfType } from 'prop-types';
 import './styles/SchoolList.css';
 
@@ -18,6 +19,7 @@ const SchoolList = ({ schools, selectedSchools, handleSelectSchool }) => {
 
   return (
     <aside className="school-list">
+      <SearchBar />
       {schoolsArray}
     </aside>
   )
