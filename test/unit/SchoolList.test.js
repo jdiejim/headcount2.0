@@ -8,6 +8,12 @@ it('renders correct component when it mounts', () => {
   expect(wrapper.find('.school-list').length).toEqual(1);
 });
 
+it('renders search bar component', () => {
+  const wrapper = shallow(<SchoolList schools={{}} selectedSchools={[]} />);
+
+  expect(wrapper.find('SearchBar').length).toEqual(1);
+});
+
 it('should render the correct amount of schools', () => {
   const schools = {
     hogwarts: {

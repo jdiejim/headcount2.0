@@ -1,0 +1,32 @@
+.search-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 86%;
+  padding: 10px 20px;
+  margin: 0;
+  font-size: 22px;
+  background-position: 95%;
+  background-size: 8%;
+  background-repeat: no-repeat;
+  border: none;
+  border-bottom: 1px solid #EDEDED;
+  color: #757575;
+}
+
+.search-input:focus {
+  outline-color: #EDEDED;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #BDBDBD;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #BDBDBD;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #BDBDBD;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #BDBDBD;
+}
