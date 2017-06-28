@@ -1,3 +1,6 @@
 .school-detail {
+  justify-content: center;
+  display: flex;
+  flex-flow: wrap;
   margin-left: 280px;
 }

@@ -5,9 +5,6 @@ import { shape, string, number, func, arrayOf, objectOf, oneOfType } from 'prop-
 import './styles/SchoolList.css';
 
 const SchoolList = ({ schools, selectedSchools, handleSelectSchool }) => {
-  if (selectedSchools.length !== 0) {
-    console.table(selectedSchools[0].data);
-  }
   const schoolKeys = Object.keys(schools);
   const schoolsArray = schoolKeys.map(school => {
     const schoolData = schools[school];
