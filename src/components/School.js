@@ -15,7 +15,7 @@ const School = (props) => {
     <article
       onClick={() => handleSelectSchool(school)}
       className="school-card">
-      {location}
+      <h3 className="school-title">{location}</h3>
       {renderGraph}
     </article>
   )
