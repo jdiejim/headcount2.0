@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../App';
-import ComparisonDetail from './ComparisonDetail';
+import App from '../../src/App';
+import ComparisonDetail from '../../src/components/ComparisonDetail';
 import { mount } from 'enzyme';
 
 it('renders correct component when it mounts', () => {

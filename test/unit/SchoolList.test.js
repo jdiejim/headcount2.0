@@ -1,5 +1,5 @@
 import React from 'react';
-import SchoolList from '../components/SchoolList';
+import SchoolList from '../../src/components/SchoolList';
 import { shallow } from 'enzyme';
 
 it('renders correct component when it mounts', () => {

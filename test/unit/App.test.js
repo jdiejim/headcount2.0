@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import SchoolList from './components/SchoolList';
-import SchoolDetail from './components/SchoolDetail';
+import App from '../../src/App';
+import SchoolList from '../../src/components/SchoolList';
+import SchoolDetail from '../../src/components/SchoolDetail';
 import {mount, shallow } from 'enzyme';
 
 it('renders correct components when it mounts', () => {
