@@ -10,7 +10,6 @@ const SchoolDetail = ({ data }) => {
     renderSchools.push(<SchoolDataGraph school={school} key={Math.round(Date.now()*Math.random())}/>);
   })
 
-
   return(
     <div className="school-detail">
       {renderSchools}
