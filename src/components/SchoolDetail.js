@@ -1,17 +1,20 @@
 import React from 'react';
-import School from './School';
 import SchoolDataGraph from './SchoolDataGraph';
-import PropTypes, { shape, string, object, arrayOf } from 'prop-types';
+import ComparisonDataTable from './ComparisonDataTable';
+import { shape, string, object, arrayOf } from 'prop-types';
 import './styles/SchoolDetail.css';
 
 const SchoolDetail = ({ data }) => {
-  let renderVal = [];
+  let renderSchools = [];
   data.forEach(school => {
-    renderVal.push(<SchoolDataGraph school={school} />);
+    renderSchools.push(<SchoolDataGraph school={school} key={Math.round(Date.now()*Math.random())}/>);
   })
+
+
   return(
     <div className="school-detail">
-      {renderVal}
+      {renderSchools}
+      <ComparisonDataTable schools={data} />
     </div>
   )
 }
