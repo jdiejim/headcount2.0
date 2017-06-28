@@ -11,13 +11,15 @@ class App extends Component {
     this.state = {
       schools: {},
       selectedSchools: [],
+      schoolsArray: []
     }
     this.handleSelectSchool = this.handleSelectSchool.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
     const schools = new DistrictRepository(kinderData);
-    this.setState({ schools: schools.data });
+    this.setState({ schools: schools, schoolsArray: schools.data });
   }
 
   handleSelectSchool(data) {
@@ -36,15 +38,25 @@ class App extends Component {
     this.setState({ selectedSchools })
   }
 
+  handleSearch(input) {
+    const schoolsArray = this.state.schools.findAllMatches(input);
+    console.log(schoolsArray);
+
+    this.setState({ schoolsArray })
+  }
+
   render() {
-    if(!this.state.schools){
-      return <div>Loading...</div>
-    }
+    const { schoolsArray, selectedSchools } = this.state;
 
     return (
       <div className='main-container'>
-        <SchoolList {...this.state} handleSelectSchool={this.handleSelectSchool}/>
-        <SchoolDetail data={this.state.selectedSchools}/>
+        <SchoolList
+          schools={schoolsArray}
+          selectedSchools={selectedSchools}
+          handleSelectSchool={this.handleSelectSchool}
+          handleSearch={this.handleSearch}
+        />
+        <SchoolDetail data={selectedSchools}/>
       </div>
     );
   }

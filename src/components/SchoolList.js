@@ -1,41 +1,34 @@
 import React from 'react';
 import School from './School';
 import SearchBar from './SearchBar';
-import { shape, string, number, func, arrayOf, objectOf, oneOfType } from 'prop-types';
+import { shape, string, number, object, array, func, arrayOf, objectOf, oneOfType } from 'prop-types';
 import './styles/SchoolList.css';
 
-const SchoolList = ({ schools, selectedSchools, handleSelectSchool }) => {
+const SchoolList = ({ schools, selectedSchools, handleSelectSchool, handleSearch }) => {
   const schoolKeys = Object.keys(schools);
-  const schoolsArray = schoolKeys.map(school => {
-    const schoolData = schools[school];
-    return <School school={schoolData}
-                   selectedSchools={selectedSchools}
-                   handleSelectSchool={handleSelectSchool}
-                   key={Math.round(Date.now()*Math.random())} />
-  })
+  const schoolsArray = schoolKeys.map(school =>
+    <School school={schools[school]}
+            selectedSchools={selectedSchools}
+            handleSelectSchool={handleSelectSchool}
+            key={Math.round(Date.now()*Math.random())}
+    />);
 
   return (
     <aside className="school-list">
-      <SearchBar />
+      <SearchBar handleSearch={handleSearch} />
       {schoolsArray}
     </aside>
   )
 }
 
-const data = shape({
-  data: oneOfType([string, number]),
-  dataFormat: string,
-  timeFrame: number
-});
-
 const schools = shape({
   location: string,
   data: objectOf(number),
-  info: arrayOf(data)
+  info: arrayOf(object)
 });
 
 SchoolList.propTypes = {
-  schools: objectOf(schools),
+  schools: oneOfType([array, object]),
   selectedSchools: arrayOf(schools),
   handleSelectSchool: func,
 }
