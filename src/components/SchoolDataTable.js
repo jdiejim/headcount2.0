@@ -1,31 +1,26 @@
 import React from 'react';
-// import { LineChart, Line } from 'recharts';
-import PropTypes, { shape, string, number } from 'prop-types';
+import TableCell  from './TableCell';
+import { objectOf, string, number } from 'prop-types';
+import './styles/SchoolDataTable.css';
 
-const SchoolDataTable = ({ data }) => {
-  const schoolData = Object.keys(data).map(e => {
-    return { name: e };
-  })
-
-  schoolData.forEach((e) => {
-    if (data[e.name] >= 0.5) {
-      e.up = data[e.name];
-    }
-    if (data[e.name] <= 0.5) {
-      e.up = data[e.name];
-      e.low = data[e.name];
-    }
-  })
+const SchoolDataTable = ({ data, location }) => {
+  const tableCells = Object.keys(data).map(e =>
+    <TableCell
+      key={Math.round(Date.now() * Math.random())}
+      data={data[e]}
+      year={e}
+    />);
 
   return(
-    <div>
-      School data
-      {/* <LineChart width={150} height={50} data={schoolData}>
-        <Line type='linear' dataKey='up' stroke='blue' />
-        <Line type='linear' dataKey='low' stroke='red' />
-      </LineChart> */}
+    <div className="school-table">
+      {tableCells}
     </div>
   )
+}
+
+SchoolDataTable.propTypes = {
+  data: objectOf(number),
+  location: string
 }
 
 export default SchoolDataTable;

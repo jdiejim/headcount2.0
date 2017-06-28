@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import DistrictRepository from './helper'
 import kinderData from '../data/kindergartners_in_full_day_program.js';
-import PropTypes, { shape, string, number, func } from 'prop-types';
 import SchoolList from './components/SchoolList'
 import SchoolDetail from './components/SchoolDetail'
 import './App.css';
