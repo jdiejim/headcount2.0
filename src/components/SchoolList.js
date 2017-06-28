@@ -1,9 +1,12 @@
 import React from 'react';
 import School from './School';
-import PropTypes, { shape, string, number, func } from 'prop-types';
+import { shape, string, number, func, arrayOf, objectOf, oneOfType } from 'prop-types';
 import './styles/SchoolList.css';
 
 const SchoolList = ({ schools, selectedSchools, handleSelectSchool }) => {
+  if (selectedSchools.length !== 0) {
+    console.table(selectedSchools[0].data);
+  }
   const schoolKeys = Object.keys(schools);
   const schoolsArray = schoolKeys.map(school => {
     const schoolData = schools[school];
@@ -18,6 +21,24 @@ const SchoolList = ({ schools, selectedSchools, handleSelectSchool }) => {
       {schoolsArray}
     </aside>
   )
+}
+
+const data = shape({
+  data: oneOfType([string, number]),
+  dataFormat: string,
+  timeFrame: number
+});
+
+const schools = shape({
+  location: string,
+  data: objectOf(number),
+  info: arrayOf(data)
+});
+
+SchoolList.propTypes = {
+  schools: objectOf(schools),
+  selectedSchools: arrayOf(schools),
+  handleSelectSchool: func,
 }
 
 export default SchoolList;

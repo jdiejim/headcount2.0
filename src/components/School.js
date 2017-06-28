@@ -1,13 +1,13 @@
 import React from 'react';
 import SchoolDataTable from './SchoolDataTable';
-import PropTypes, { shape, string, number } from 'prop-types';
+import { shape, string, number, func, arrayOf, object } from 'prop-types';
 import './styles/School.css';
 
 const School = (props) => {
-  const { school, school: { location, data, info }, selectedSchools, handleSelectSchool } = props;
+  const { school, school: { location, data }, selectedSchools, handleSelectSchool } = props;
   let renderGraph;
 
-  if (selectedSchools.map(s => s.location).indexOf(location) != -1) {
+  if (selectedSchools.map(s => s.location).indexOf(location) !== -1) {
     renderGraph = <SchoolDataTable data={data} />;
   }
 
@@ -19,6 +19,24 @@ const School = (props) => {
       {renderGraph}
     </article>
   )
+}
+
+const data = shape({
+  data: number,
+  dataFormat: string,
+  timeFrame: number,
+});
+
+const school = shape({
+  data: number,
+  info: arrayOf(data),
+  location: string
+});
+
+School.propTypes = {
+  school: object,
+  selectedSchools: arrayOf(school),
+  handleSelectSchool: func,
 }
 
 export default School;
