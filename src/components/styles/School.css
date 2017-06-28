@@ -1,5 +1,38 @@
 .school-card {
-  width: 95%;
+  width: 90%;
   margin: 10px auto;
-  border: 1px solid red;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0) 5px 5px 20px, rgba(0, 0, 0, 0.1) 5px 5px 20px;
+  color: #757575;
+}
+
+.school-title {
+  margin: 0;
+  padding: 10px;
+  text-transform: capitalize;
+}
+
+.school-average-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.school-info-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.school-average {
+  margin: 0;
+  padding: 10px 10px 0;
+  font-weight: 400;
+  text-align: right;
+}
+
+.average-label {
+  padding: 0 10px;
+  margin: -5px 0 5px;
+  font-size: 10px;
+  text-align: right;
 }
