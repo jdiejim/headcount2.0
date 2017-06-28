@@ -16,12 +16,12 @@ const ComparisonTableCell = ({ data, year }) => {
   return (
     <article className="table-cell">
       <p className="year-cell">{year}</p>
-      {data[0] !== 'undefined' &&
-          <div className="data-cell">
-            <p style={bgStyle1}>{data[0]}</p>
-          </div>
+      {bgStyle1 &&
+        <div className="data-cell">
+          <p style={bgStyle1}>{data[0]}</p>
+        </div>
       }
-      {data[1] !== 'undefined' &&
+      {bgStyle2 &&
         <div className="data-cell">
           <p style={bgStyle2}>{data[1]}</p>
         </div>
