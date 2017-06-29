@@ -52,7 +52,8 @@ class App extends Component {
   }
 
   render() {
-    const { schoolsArray, selectedSchools, isHidden } = this.state;
+    // console.log(this.state.schools);
+    const { schoolsArray, selectedSchools, schools, isHidden } = this.state;
 
     return (
       <div className='main-container'>
@@ -62,7 +63,7 @@ class App extends Component {
           handleSelectSchool={this.handleSelectSchool}
           handleSearch={this.handleSearch}
         />
-        <SchoolDetail data={selectedSchools} handleLoadMenu={this.handleLoadMenu} />
+        <SchoolDetail schools={schools} selectedSchools={selectedSchools} handleLoadMenu={this.handleLoadMenu} />
         <LoadMenu isHidden={isHidden} handleLoadMenu={this.handleLoadMenu} />
       </div>
     );
