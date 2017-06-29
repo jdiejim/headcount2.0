@@ -7,8 +7,7 @@ const SchoolDataGraph = ({ school }) => {
     return <div />
   }
 
-  const dataKeys = Object.keys(school.data);
-  const schoolData = dataKeys.map(e => {
+  const schoolData = Object.keys(school.data).map(e => {
     return { name: e };
   })
 
@@ -16,7 +15,9 @@ const SchoolDataGraph = ({ school }) => {
     e.val = school.data[e.name];
   });
 
+  const dataKeys = Object.keys(school.data);
   const average = Math.round((dataKeys.reduce((t, k) => t += school.data[k], 0) / dataKeys.length) * 100) / 100;
+
   const bgStyle = {
     backgroundColor: average > 0.5 ? '#D0EFE8' : '#F0CECE'
   }

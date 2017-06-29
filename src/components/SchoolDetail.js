@@ -5,9 +5,9 @@ import Header from './Header';
 import { shape, string, object, arrayOf } from 'prop-types';
 import './styles/SchoolDetail.css';
 
-const SchoolDetail = ({ data, handleLoadMenu }) => {
+const SchoolDetail = ({ schools, selectedSchools, handleLoadMenu }) => {
   let renderSchools = [];
-  data.forEach(school => {
+  selectedSchools.forEach(school => {
     renderSchools.push(<SchoolDataGraph school={school} key={Math.round(Date.now()*Math.random())}/>);
   })
 
@@ -15,7 +15,9 @@ const SchoolDetail = ({ data, handleLoadMenu }) => {
     <div className="school-detail">
       <Header handleLoadMenu={handleLoadMenu} />
       {renderSchools}
-      <ComparisonDataTable schools={data} />
+      <ComparisonDataTable
+        schools={schools}
+        selectedSchools={selectedSchools} />
     </div>
   )
 }
@@ -29,5 +31,5 @@ const school = shape({
 })
 
 SchoolDetail.propTypes = {
-  data: arrayOf(school)
+  selectedSchools: arrayOf(school)
 }
