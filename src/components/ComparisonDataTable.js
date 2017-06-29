@@ -1,12 +1,15 @@
 import React from 'react';
 import ComparisonTableCell  from './ComparisonTableCell';
-import { shape, objectOf, arrayOf, string, number, data, object } from 'prop-types';
+import { shape, objectOf, arrayOf, string, number, object } from 'prop-types';
 import './styles/ComparisonDataTable.css';
 
 const ComparisonDataTable = ({ schools }) => {
   if(schools.length === 0){
-    return (<div>Please select a school.</div>);
+    return (<span></span>);
   }
+
+  const tableHeader = [schools[0].location];
+  if(schools[1]) tableHeader.push(schools[1].location);
 
   let dataKeys = {};
   schools.forEach((school) => {
@@ -37,6 +40,17 @@ const ComparisonDataTable = ({ schools }) => {
 
   return(
     <div className="comparison-table">
+      <article className="comparison-table-row">
+        <p className="year-cell"></p>
+        <div className="comparison-header-cell">
+          <p>{tableHeader[0]}</p>
+        </div>
+        {tableHeader[1] &&
+          <div className="comparison-header-cell">
+            <p>{tableHeader[1]}</p>
+          </div>
+        }
+      </article>
       {comparisonTableCells}
     </div>
   )
@@ -45,11 +59,11 @@ const ComparisonDataTable = ({ schools }) => {
 const schools = shape({
   location: string,
   data: objectOf(number),
-  info: arrayOf(data)
+  info: arrayOf(object)
 });
 
 ComparisonDataTable.propTypes = {
-  schools: arrayOf(object)
+  schools: arrayOf(schools)
 }
 
 export default ComparisonDataTable;
