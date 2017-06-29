@@ -1,0 +1,77 @@
+.load-menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 265px;
+  height: 100%;
+  background-color: #FFF;
+  box-shadow: rgba(0, 0, 0, 0.10) 0px 3px 10px, rgba(0, 0, 0, 0.15) 0px 3px 10px;
+  overflow: scroll;
+  transition: transform 0.3s;
+}
+
+.menu-show {
+  transform: translateX(100%);
+}
+
+.load-title {
+  font-weight: 400;
+}
+
+.load-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 20px 20px;
+  margin: 0px 0 0;
+}
+
+.hide-menu {
+  width: 20px;
+  height: 100%;
+  margin-right: 10px;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 25px;
+  transition: transform 0.5s;
+}
+
+.hide-menu:hover {
+  transform: scale(1.3);
+}
+
+.hide-menu:focus {
+  outline: none;
+}
+
+.db-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.db-btn {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: normal;
+  border: none;
+  background-color: transparent;
+  color: #979797;
+  text-align: left;
+}
+
+.db-btn:hover {
+  background-color: #d7d7d7;
+}
+
+.db-btn:focus {
+  outline: none;
+}

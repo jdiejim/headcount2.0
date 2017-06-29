@@ -1,10 +1,11 @@
 import React from 'react';
 import SchoolDataGraph from './SchoolDataGraph';
 import ComparisonDataTable from './ComparisonDataTable';
+import Header from './Header';
 import { shape, string, object, arrayOf } from 'prop-types';
 import './styles/SchoolDetail.css';
 
-const SchoolDetail = ({ data }) => {
+const SchoolDetail = ({ data, handleLoadMenu }) => {
   let renderSchools = [];
   data.forEach(school => {
     renderSchools.push(<SchoolDataGraph school={school} key={Math.round(Date.now()*Math.random())}/>);
@@ -12,6 +13,7 @@ const SchoolDetail = ({ data }) => {
 
   return(
     <div className="school-detail">
+      <Header handleLoadMenu={handleLoadMenu} />
       {renderSchools}
       <ComparisonDataTable schools={data} />
     </div>
