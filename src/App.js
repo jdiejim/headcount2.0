@@ -3,6 +3,7 @@ import DistrictRepository from './helper'
 import kinderData from '../data/kindergartners_in_full_day_program.js';
 import SchoolList from './components/SchoolList'
 import SchoolDetail from './components/SchoolDetail'
+import LoadMenu from './components/LoadMenu';
 import './App.css';
 
 class App extends Component {
@@ -11,10 +12,12 @@ class App extends Component {
     this.state = {
       schools: {},
       selectedSchools: [],
-      schoolsArray: []
+      schoolsArray: [],
+      isHidden: false
     }
     this.handleSelectSchool = this.handleSelectSchool.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleLoadMenu = this.handleLoadMenu.bind(this);
   }
 
   componentDidMount() {
@@ -40,13 +43,16 @@ class App extends Component {
 
   handleSearch(input) {
     const schoolsArray = this.state.schools.findAllMatches(input);
-    console.log(schoolsArray);
 
     this.setState({ schoolsArray })
   }
 
+  handleLoadMenu() {
+    this.setState({ isHidden: !this.state.isHidden})
+  }
+
   render() {
-    const { schoolsArray, selectedSchools } = this.state;
+    const { schoolsArray, selectedSchools, isHidden } = this.state;
 
     return (
       <div className='main-container'>
@@ -56,7 +62,8 @@ class App extends Component {
           handleSelectSchool={this.handleSelectSchool}
           handleSearch={this.handleSearch}
         />
-        <SchoolDetail data={selectedSchools}/>
+        <SchoolDetail data={selectedSchools} handleLoadMenu={this.handleLoadMenu} />
+        <LoadMenu isHidden={isHidden} handleLoadMenu={this.handleLoadMenu} />
       </div>
     );
   }
