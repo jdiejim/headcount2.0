@@ -14,7 +14,7 @@ export default class DistrictRepository {
         obj[locKey] = this.getObjectTemplate(locKey);
       }
       obj[locKey].info.push(newObj);
-      obj[locKey].data[timeFrame] = getRoundedData(data, 1000);
+      obj[locKey].data[timeFrame] = this.getRoundedData(data, 1000);
       return obj;
     }, {});
   }
@@ -49,14 +49,21 @@ export default class DistrictRepository {
     const returnObj = {}
     returnObj[first.toUpperCase()] = this.findAverage(first)
     returnObj[second.toUpperCase()] = this.findAverage(second)
-    returnObj['compared'] = getRoundedData(returnObj[first.toUpperCase()] / returnObj[second.toUpperCase()], 1000)
+    returnObj['compared'] = this.getRoundedData(returnObj[first.toUpperCase()] / returnObj[second.toUpperCase()], 1000)
     return returnObj
   }
 
   findAverage(district) {
     const data = this.findByName(district).data;
     const dataKeys = Object.keys(data);
-    return getRoundedData((dataKeys.reduce((t, k) => t += data[k], 0) / dataKeys.length), 1000);
+    return this.getRoundedData((dataKeys.reduce((t, k) => t += data[k], 0) / dataKeys.length), 1000);
+  }
+
+  getRoundedData(data, accuracy = 1000) {
+    if(isNaN(data)){
+      return 0;
+    }
+    return Math.round(data * accuracy) / accuracy;
   }
 
   findByName(location) {
@@ -81,17 +88,3 @@ export default class DistrictRepository {
                        .map(e => this.findByName(e));
   }
 }
-
-function getRoundedData(data, accuracy) {
-  if(isNaN(data)){
-    return 0;
-  }
-  return Math.round(data * accuracy) / accuracy;
-}
-
-function getAverage(data, accuracy) {
-  const dataKeys = Object.keys(data);
-  return getRoundedData((dataKeys.reduce((t, k) => t += data[k], 0) / dataKeys.length), accuracy);
-}
-
-export { getAverage, getRoundedData };

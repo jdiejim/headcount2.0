@@ -43,7 +43,7 @@ describe('DistrictRepository iteration 1 - part 1', () =>  {
     expect(academy.data).toEqual(result)
   });
 
-  test('it should return a number rounded to the nearest housandth', () => {
+  test('it should return a number rounded to the nearest thousandth', () => {
     const dataVal = 0.30223456;
     const result = 0.302;
 
@@ -62,5 +62,5 @@ describe('DistrictRepository iteration 1 - part 1', () =>  {
 
     expect(district.getObjectTemplate('Colorado')).toEqual(result);
   });
-  
+
 });

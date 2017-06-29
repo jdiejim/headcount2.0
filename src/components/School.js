@@ -6,7 +6,10 @@ import './styles/School.css';
 
 const School = (props) => {
   const { school, school: { location, data }, selectedSchools, handleSelectSchool } = props;
-  const average = getAverage(data, 100);
+
+  const dataKeys = Object.keys(data);
+  const average = Math.round((dataKeys.reduce((t, k) => t += data[k], 0) / dataKeys.length) * 100) / 100;
+
   let renderGraph;
   const bgStyle = {
     backgroundColor: average > 0.5 ? '#D0EFE8' : '#F0CECE'
