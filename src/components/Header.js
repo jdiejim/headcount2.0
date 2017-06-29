@@ -1,4 +1,5 @@
 import React from 'react';
+import { string, func } from 'prop-types';
 import menu from '../assets/menu.svg';
 import './styles/Header.css';
 
@@ -17,6 +18,11 @@ const Header = ({ handleLoadMenu, headerTitle }) => {
       </button>
     </header>
   )
+}
+
+Header.propTypes = {
+  handleLoadMenu: func,
+  headerTitle: string
 }
 
 export default Header;

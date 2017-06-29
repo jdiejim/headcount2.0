@@ -1,4 +1,5 @@
 import React from 'react';
+import { bool, string, object, func } from 'prop-types';
 import remove from '../assets/remove.svg';
 import './styles/LoadMenu.css';
 
@@ -30,6 +31,14 @@ const LoadMenu = ({ isHidden, handleLoadMenu, dbKeys, selectedKey, handleLoadDat
       </nav>
     </aside>
   )
+}
+
+LoadMenu.propTypes = {
+  isHidden: bool,
+  handleLoadMenu: func,
+  dbKeys: object,
+  selectedKey: string,
+  handleLoadData: func
 }
 
 export default LoadMenu;
