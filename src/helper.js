@@ -49,14 +49,13 @@ export default class DistrictRepository {
     const returnObj = {}
     returnObj[first.toUpperCase()] = this.findAverage(first)
     returnObj[second.toUpperCase()] = this.findAverage(second)
-    returnObj['compared'] = getRoundedData(returnObj[first] / returnObj[second], 1000)
+    returnObj['compared'] = getRoundedData(returnObj[first.toUpperCase()] / returnObj[second.toUpperCase()], 1000)
     return returnObj
   }
 
   findAverage(district) {
     const data = this.findByName(district).data;
     const dataKeys = Object.keys(data);
-    
     return getRoundedData((dataKeys.reduce((t, k) => t += data[k], 0) / dataKeys.length), 1000);
   }
 
