@@ -2,3 +2,11 @@
   flex: 1, 0, auto;
   margin: 50px;
 }
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+}

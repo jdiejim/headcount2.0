@@ -1,11 +1,11 @@
 import React from 'react';
 import ComparisonTableCell  from './ComparisonTableCell';
-import { shape, objectOf, arrayOf, string, number, data, object } from 'prop-types';
+import { shape, objectOf, arrayOf, string, number, object } from 'prop-types';
 import './styles/ComparisonDataTable.css';
 
 const ComparisonDataTable = ({ schools }) => {
   if(schools.length === 0){
-    return (<div></div>);
+    return (<span></span>);
   }
 
   const tableHeader = [schools[0].location];
@@ -59,11 +59,11 @@ const ComparisonDataTable = ({ schools }) => {
 const schools = shape({
   location: string,
   data: objectOf(number),
-  info: arrayOf(data)
+  info: arrayOf(object)
 });
 
 ComparisonDataTable.propTypes = {
-  schools: arrayOf(object)
+  schools: arrayOf(schools)
 }
 
 export default ComparisonDataTable;
