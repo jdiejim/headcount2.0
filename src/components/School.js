@@ -1,7 +1,6 @@
 import React from 'react';
 import SchoolDataTable from './SchoolDataTable';
 import { func, arrayOf, object } from 'prop-types';
-import { getAverage } from '../helper';
 import './styles/School.css';
 
 const School = (props) => {
