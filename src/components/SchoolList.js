@@ -31,6 +31,7 @@ SchoolList.propTypes = {
   schools: oneOfType([array, object]),
   selectedSchools: arrayOf(schools),
   handleSelectSchool: func,
+  handleSearch: func
 }
 
 export default SchoolList;
