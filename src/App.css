@@ -4,3 +4,83 @@
   display: flex;
   flex-direction: row;
 }
+
+@media screen and (max-width: 800px) {
+  .main-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .school-list {
+    order: 1;
+    position: relative;
+    width: 95%;
+    /*height: 300px;*/
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 10px 50px;
+    background-position: 2%;
+    background-size: 2%;
+    font-size: 15px;
+  }
+
+  .school-detail {
+    width: 100%;
+    margin: 0 0 20px;
+  }
+
+  .header {
+    padding: 20px 10px 30px;
+  }
+
+  .header-title {
+    width: 100%;
+    padding: 0;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .menu-db {
+    position: absolute;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background-size: 70%;
+  }
+
+  .comparison-table {
+    width: 95%;
+  }
+
+  .comparison-header-cell p {
+    /*width: 10px;*/
+  }
+
+  .comparison-table-row {
+    /*width: 300px;*/
+  }
+
+  .chart-header {
+    width: 95%;
+    margin: 0 0 20px;
+  }
+
+  .recharts-surface {
+    width: 95%;
+  }
+
+  svg {
+    width: 95%;
+  }
+
+  .chart-wrapper {
+    /*flex: 1, 0, auto;*/
+    width: 95%;
+    margin: 50px auto;
+  }
+
+}
