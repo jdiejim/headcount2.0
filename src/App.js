@@ -46,7 +46,8 @@ class App extends Component {
   }
 
   render() {
-    const { schoolsArray, selectedSchools } = this.state;
+    // console.log(this.state.schools);
+    const { schoolsArray, selectedSchools, schools } = this.state;
 
     return (
       <div className='main-container'>
@@ -56,7 +57,7 @@ class App extends Component {
           handleSelectSchool={this.handleSelectSchool}
           handleSearch={this.handleSearch}
         />
-        <SchoolDetail data={selectedSchools}/>
+        <SchoolDetail schools={schools} selectedSchools={selectedSchools}/>
       </div>
     );
   }

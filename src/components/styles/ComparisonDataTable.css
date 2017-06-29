@@ -11,3 +11,8 @@
   color: #000;
   text-align: center;
 }
+
+.comparison-table-row {
+  display: flex;
+  justify-content: space-between;
+}
