@@ -5,7 +5,7 @@ import Header from './Header';
 import { shape, string, object, arrayOf } from 'prop-types';
 import './styles/SchoolDetail.css';
 
-const SchoolDetail = ({ schools, selectedSchools, handleLoadMenu }) => {
+const SchoolDetail = ({ schools, selectedSchools, handleLoadMenu, headerTitle }) => {
   let renderSchools = [];
   selectedSchools.forEach(school => {
     renderSchools.push(<SchoolDataGraph school={school} key={Math.round(Date.now()*Math.random())}/>);
@@ -13,7 +13,7 @@ const SchoolDetail = ({ schools, selectedSchools, handleLoadMenu }) => {
 
   return(
     <div className="school-detail">
-      <Header handleLoadMenu={handleLoadMenu} />
+      <Header handleLoadMenu={handleLoadMenu} headerTitle={headerTitle} />
       {renderSchools}
       <ComparisonDataTable
         schools={schools}

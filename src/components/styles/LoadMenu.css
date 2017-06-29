@@ -70,8 +70,13 @@
 
 .db-btn:hover {
   background-color: #d7d7d7;
+  cursor: pointer;
 }
 
 .db-btn:focus {
   outline: none;
+}
+
+.selected {
+  background-color: #d7d7d7;
 }

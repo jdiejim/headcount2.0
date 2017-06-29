@@ -6,6 +6,10 @@
   color: #757575;
 }
 
+.school-card:hover {
+  cursor: pointer;
+}
+
 .school-title {
   margin: 0;
   padding: 10px;
