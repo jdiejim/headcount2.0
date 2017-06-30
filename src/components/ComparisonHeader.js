@@ -14,7 +14,7 @@ const ComparisonHeader = ({ schools, selectedSchools }) => {
   return(
       <article className="comparison-table-row">
         {selectedSchools.length === 2 &&
-          <p><span className='comp-avg-header'>Average:</span> { comparedAvg }</p>
+          <p><span className='comp-avg-header'>Compare Ratio:</span> { comparedAvg }</p>
         }
       </article>
   )

@@ -44,6 +44,7 @@
 
 .hide-menu:hover {
   transform: scale(1.3);
+  cursor: pointer;
 }
 
 .hide-menu:focus {
