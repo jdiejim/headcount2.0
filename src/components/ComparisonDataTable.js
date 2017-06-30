@@ -6,7 +6,7 @@ import './styles/ComparisonDataTable.css';
 
 const ComparisonDataTable = ({ schools, selectedSchools }) => {
   if(selectedSchools.length === 0){
-    return (<span></span>);
+    return null;
   }
 
   const tableHeader = [selectedSchools[0].location];
